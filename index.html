@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>LAMP Droplet</title>
     <style>
-    body {width: 82%;margin: 1em auto;background: #ececec;font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";line-height: 1.5;font-size:18px;}
-    .step {background: #fafafa;margin: 1em; padding: 1em;border: 1px solid #e0e0e0;border-radius:4px;}
-    code {background: #e0e0e0; padding: .2em .5em .2em .5em;}
+    body {width: 82%;margin: 1em auto;background: #222;color:#ccc;font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";line-height: 1.5;font-size:18px;}
+    a:link{color:#6789ab;}
+    a:active{color:#eee;}
+    a:hover{color:cyan;}
+    a:visited{color:#789abc;}
+    .step {background: #333;margin: 1em; padding: 1em;border: 1px solid #e0e0e0;border-radius:4px;}
+    code {background: #555; color:#ddd; padding: .4em .9em .4em .9em;}
     h3 {margin-bottom: 0; padding-bottom: 0;}
     p:first-child {padding-top: 0;margin-top:0;}
     img {width: 100%; height: auto;}
@@ -39,44 +43,44 @@
     <div class="step">
       <h3>Step 3: Add a new user</h3>
       <p>Find and copy your new droplet&#39;s IP address, then open your terminal and enter:</p>
-      <pre><code>  $ ssh root@your.ip.address</code></pre>
+      <pre><code>$ ssh root@your.ip.address</code></pre>
       <p>Your connection should authorize using the RSA Key you set up earlier.</p>
       <p>Now add a new user by entering:</p>
-      <pre><code>  $ adduser newname</code></pre>
+      <pre><code>$ adduser newname</code></pre>
       <p>Then add them to the sudoers group.</p>
-      <pre><code>  $ usermod -aG sudo newname</code></pre>
+      <pre><code>$ usermod -aG sudo newname</code></pre>
       <p>Repeat this process for each new user. Then, allow them to authenticate via password by editing the sshd_config file:</p>
-      <pre><code>  $ nano /etc/ssh/sshd_config</code></pre>
+      <pre><code>$ nano /etc/ssh/sshd_config</code></pre>
       <p>and changing PasswordAuthentication to yes. Then exit, save, and return.</p>
     </div>
     <div class="step">
       <h3>Step 4: Enable and test firewall</h3>
       <p>Enable SSH connections.</p>
-      <pre><code>  $ sudo ufw allow OpenSSH</code></pre>
+      <pre><code>$ sudo ufw allow OpenSSH</code></pre>
       <p>Enable SFTP connections.</p>
-      <pre><code>  $ sudo ufw allow sftp</code></pre>
+      <pre><code>$ sudo ufw allow sftp</code></pre>
       <p>Enable the firewall (ufw).</p>
-      <pre><code>  $ sudo ufw enable</code></pre>
+      <pre><code>$ sudo ufw enable</code></pre>
       <p>Check the status of the firewall.</p>
-      <pre><code>  $ sudo ufw status</code></pre>
+      <pre><code>$ sudo ufw status</code></pre>
     </div>
     <div class="step">
       <h3>Step 5: Install Apache</h3>
       <p>First, you should update apt, Linux's installer.</p>
-      <pre><code>  $ sudo apt update</code></pre>
+      <pre><code>$ sudo apt update</code></pre>
       <p>Then, using the installer, download and install Apache packages.</p>
-      <pre><code>  $ sudo apt install apache2</code></pre>
+      <pre><code>$ sudo apt install apache2</code></pre>
     </div>
     <div class="step">
       <h3>Step 6: Whitelist Apache through the firewall and check status</h3>
-      <pre><code>  $ sudo ufw allow &#39;Apache Full&#39;</code></pre>
-      <pre><code>  $ sudo systemctl status apache2</code></pre>
+      <pre><code>$ sudo ufw allow &#39;Apache Full&#39;</code></pre>
+      <pre><code>$ sudo systemctl status apache2</code></pre>
       <p>You should see a default loading page when you visit the IP address.</p>
     </div>
     <div class="step">
       <h3>Step 7: Set Apache to start upon booting</h3>
       <p>The following command will configure Apache to start everytime the machine boots. If it goes out for some reason, Apache will start when it comes back on.</p>
-      <pre><code> $ sudo systemctl enable apache2</code></pre>
+      <pre><code>$ sudo systemctl enable apache2</code></pre>
     </div>
     <div class="step">
       <h3>That&#39;s it!</h3>
