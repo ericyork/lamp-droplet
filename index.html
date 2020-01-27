@@ -10,9 +10,9 @@
     a:active{color:#eee;}
     a:hover{color:cyan;}
     a:visited{color:#789abc;}
-    .step {background: #333;margin: 1em; padding: 1em;border: 1px solid #e0e0e0;border-radius:4px;}
-    code {background: #555; color:#ddd; padding: .4em .9em .4em .9em;}
-    h3 {margin-bottom: 0; padding-bottom: 0;}
+    .step {background: #333;margin: 1em; padding: 1em;border: 1px solid #444;border-radius:4px;}
+    code {background: #555; color:#ddd; padding: .35em .75em .3em .75em;}
+    h3 {border-bottom: 1px solid #e0e0e0; padding-bottom: .5em;}
     p:first-child {padding-top: 0;margin-top:0;}
     img {width: 100%; height: auto;}
     </style>
@@ -22,7 +22,7 @@
       <h1>How to Create a LAMP Droplet</h1>
       <p>This article explains how to create and configure a LAMP stack using a <a href="https://www.digitalocean.com/">Digital Ocean</a> droplet. Once you've completed these steps, you'll have a fully-functional server environment.</p>
       <p>Before you begin, you should be comfortable with the command line interface and you should know how to connect via <code>ssh</code> and do basic tasks from the terminal. You'll also need a Digital Ocean account and a working credit card on file.</p>
-      <p><strong>Important note:</strong>The terminal commands below include the <code>$</code> to represent the command prompt. When entering the commands, you <strong>do not</strong> type the <code>$</code>, only the commands themselves.</p>
+      <p><strong>Important note: </strong>The terminal commands below include the <code>$</code> to represent the command prompt. When entering the commands, you <strong>do not</strong> type the <code>$</code>, only the commands themselves.</p>
     </div>
     <div class="step">
       <h3>Step 1: Create a new droplet</h3>
@@ -30,7 +30,7 @@
     </div>
     <div class="step">
       <h3>Step 2: Configure droplet setup</h3>
-      <ol>
+      <ol type="a">
         <li>Select Ubuntu 18.04 x64</li>
         <li>Select 1GB Droplet</li>
         <li>Enable backups</li>
@@ -44,7 +44,7 @@
       <h3>Step 3: Add a new user</h3>
       <p>Find and copy your new droplet&#39;s IP address, then open your terminal and enter:</p>
       <pre><code>$ ssh root@your.ip.address</code></pre>
-      <p>Your connection should authorize using the RSA Key you set up earlier.</p>
+      <p>Your connection should authorize using the RSA Key you set up in step 2a.</p>
       <p>Now add a new user by entering:</p>
       <pre><code>$ adduser newname</code></pre>
       <p>Then add them to the sudoers group.</p>
